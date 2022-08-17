@@ -18,10 +18,11 @@ img {
 
 h2 {
     padding: 10px 0px;
+    margin: 0px;
 }
 
 label {
-    padding: 10px 0px;
+    padding: 7px 0px;
 }
 
 input {
@@ -32,12 +33,15 @@ input {
     transition: 0.3s;
     border: 1px rgb(116, 249, 255);
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+    outline: none;
 }
 
-button {
+.ingresar {
+    display: block;
     color: #fff;
     background-color: rgb(110, 235, 241);
-    margin: 35px;
+    width: 270px;
+    margin: 10px auto 0px auto;
     padding: 5px;
     border-radius: 4px;
     border: 0px;
@@ -47,7 +51,10 @@ button {
 input:hover {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
 }
+input:active > input::placeholder {
+    size: 50%;    
+}
 
 button:hover {
-    background-color: rgb(0,0,0,0.9);
+    background-color: rgb(0,0,0,0.8);
 }
