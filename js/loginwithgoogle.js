@@ -1,6 +1,9 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/9.9.2/firebase-analytics.js";
+import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+/* import { initializeApp } from 'firebase/app'; */
+import { GoogleAuthProvider } from "firebase/auth";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -20,22 +23,14 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const analytics = getAnalytics(app);
 
-/* import { initializeApp } from 'firebase/app'; */
+let LoginWithGoogle = document.getElementById("AuthGoogle");
 
-// TODO: Replace the following with your app's Firebase project configuration
-const firebaseConfig = {
-    //...
-};
+console.log(LoginWithGoogle);
 
-const app = initializeApp(firebaseConfig);
+/* var LoginWithGoogle = function() {
 
-import { GoogleAuthProvider } from "firebase/auth";
-
-var LoginWithGoogle = function()
-{
 const provider = new GoogleAuthProvider();
-
-import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth";
+console.log(LoginWithGoogle);
 
 const auth = getAuth();
 signInWithPopup(auth, provider)
@@ -56,4 +51,4 @@ signInWithPopup(auth, provider)
         const credential = GoogleAuthProvider.credentialFromError(error);
         // ...
         console.log(user.displayName);
-    });}
+    });} */
