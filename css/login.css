@@ -50,11 +50,22 @@ input {
 
 input:hover {
     box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.2);
+    
 }
-input:active > input::placeholder {
-    size: 50%;    
+input:active {
+    color: #fff;
 }
 
-button:hover {
+.ingresar:hover {
     background-color: rgb(0,0,0,0.8);
+}
+
+.g_id_signin {
+    margin: 10px 0 0 14.5px;
+    background-color: #fff;
+    border: none;
+}
+
+.datos {
+    display: none;
 }

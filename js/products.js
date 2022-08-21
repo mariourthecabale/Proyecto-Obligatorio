@@ -1,7 +1,7 @@
 let PRODRUCTS_AUTOS = "https://japceibal.github.io/emercado-api/cats_products/101.json";
 
 
-function showProductsList(){
+function MostrarListaProductos(){
 
     let htmlContentToAppend = "";
     for(let i = 0; i < currentProductsArray.length; i++){
@@ -13,7 +13,7 @@ function showProductsList(){
                     </div>
                     <div class="col">
                         <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">${products.name}+"-"${products.currency}+" "+${products.cost}</h4>
+                            <h4 class="mb-1">${products.name} - ${products.currency} ${products.cost}</h4>
                             <small class="text-muted">${products.soldCount} artículos</small>
                         </div>
                         <p class="mb-1">${products.description}</p>
@@ -23,7 +23,7 @@ function showProductsList(){
             `
         }
 
-        document.getElementById("Productos-autos").innerHTML += htmlContentToAppend;
+        document.getElementById("lista-autos").innerHTML += htmlContentToAppend;
     }
 
 
@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", function(e){
         if (resultObj.status === "ok"){
             currentProductsArray = resultObj.data.products
             console.log(currentProductsArray.length)
-            showProductsList()
+            MostrarListaProductos()
         }
     });
 })
