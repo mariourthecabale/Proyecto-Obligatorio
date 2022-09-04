@@ -7,35 +7,62 @@ const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
 
-let showSpinner = function(){
+let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
 }
 
-let hideSpinner = function(){
+let hideSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "none";
 }
 
-let getJSONData = function(url){
-    let result = {};
-    showSpinner();
-    return fetch(url)
+let getJSONData = function (url) {
+  let result = {};
+  showSpinner();
+  return fetch(url)
     .then(response => {
       if (response.ok) {
         return response.json();
-      }else{
+      } else {
         throw Error(response.statusText);
       }
     })
-    .then(function(response) {
-          result.status = 'ok';
-          result.data = response;
-          hideSpinner();
-          return result;
+    .then(function (response) {
+      result.status = 'ok';
+      result.data = response;
+      hideSpinner();
+      return result;
     })
-    .catch(function(error) {
-        result.status = 'error';
-        result.data = error;
-        hideSpinner();
-        return result;
+    .catch(function (error) {
+      result.status = 'error';
+      result.data = error;
+      hideSpinner();
+      return result;
     });
 }
+
+function mostrarUsuario() {
+  let htmlContentToAppend = "";
+  let imagen = localStorage.getItem('Imagen');
+  let nombre = localStorage.getItem('Nombre');
+  htmlContentToAppend = `<ul class="navbar-nav w-100 justify-content-between">
+  <li class="nav-item">
+    <a class="nav-link" href="portada.html">Inicio</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="categories.html">Categorías</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" href="sell.html">Vender</a>
+  </li>
+  <li class="nav-item">
+  <a class="nav-link" href="my-profile.html">${nombre}<img class="imagen_usuario"src="${imagen}"></a></li>
+  </li>
+</ul>  `
+
+  document.getElementById("navbarNav").innerHTML = htmlContentToAppend;
+}
+console.log(mostrarUsuario)
+
+document.addEventListener("DOMContentLoaded", function () {
+  mostrarUsuario();
+});

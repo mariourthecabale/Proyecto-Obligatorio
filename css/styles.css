@@ -188,3 +188,15 @@ a.custom-card:hover {
 .checked {
   color: orange;
 }
+
+.imagen_usuario {
+  width: 30px;
+  float: right;
+}
+#product-list-container {
+  text-align: left;
+}
+
+.col {
+  display: inline;
+}

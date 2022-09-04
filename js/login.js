@@ -1,13 +1,12 @@
 
 const boton = document.getElementById("verificar");
-const botonSignIn = document.getElementById("IngresarGoogle");
-const botonSignOut = document.getElementById("salir");
 
-boton.addEventListener("click", () => {
+boton.addEventListener("click", function() {
 
     let usuario= document.getElementById("usuario").value;
     let contraseña= document.getElementById("password").value;
     let valido = true;
+    localStorage.setItem('Nombre', usuario)
 
     if (usuario.trim()=="") {
         valido= false
@@ -34,16 +33,18 @@ function decodificador (token) {
 
     /* Toma la decodificacion y lee sus propiedades */
 function handleCredentialResponse(response) {
-    const responsePayload = decodificador(response.credential);
+    const datos_usuario = decodificador(response.credential);
 
 /* Usar como guia para mostrar al usuario en pantalla */
-    console.log("ID: " + responsePayload.sub);
-    console.log('Full Name: ' + responsePayload.name);
-    console.log('Given Name: ' + responsePayload.given_name);
-    console.log('Family Name: ' + responsePayload.family_name);
-    console.log("Image URL: " + responsePayload.picture);
-    console.log("Email: " + responsePayload.email);
-    if (responsePayload.name!="") {
+    console.log("ID: " + datos_usuario.sub);
+    console.log('Full Name: ' + datos_usuario.name);
+    console.log('Given Name: ' + datos_usuario.given_name);
+    console.log('Family Name: ' + datos_usuario.family_name);
+    console.log("Image URL: " + datos_usuario.picture);
+    console.log("Email: " + datos_usuario.email);
+    localStorage.setItem('Nombre', datos_usuario.name)
+    localStorage.setItem('Imagen',datos_usuario.picture)
+    if (datos_usuario.name!="") {
         window.location.href= "portada.html";
     }
 };
@@ -62,4 +63,5 @@ $("#email").text(profile.getEmail());
 $("#image").attr('src',profile.getImageUrl());
 $(".data").css("display", "block");
 $(".g-signin2").css("display", "none"); */
+
 

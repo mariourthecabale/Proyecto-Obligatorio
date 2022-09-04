@@ -39,9 +39,48 @@
   <main class="pb-5 container" >
     <div class="text-center p-4">
       <h2>Productos</h2>
-      <p class="lead">Verás aquí todos los productos de la categoría Autos.</p>
-    </div>
-    <div id="lista-autos" class="container">
+      <p id="cabecera" class="lead"></p>
+    <div class="container">
+      <div class="row">
+        
+        <div class="col text-end">
+          <div class="btn-group btn-group-toggle mb-4" data-bs-toggle="buttons">
+            <input type="radio" class="btn-check" name="options" id="Asc">
+            <label class="btn btn-light" for="Asc"><i class="fas fa-sort-amount-up-dollar mr-1"></i></label>
+            <input type="radio" class="btn-check" name="options" id="Desc">
+            <label class="btn btn-light" for="Desc"><i class="fas fa-sort-amount-down-dollar mr-1"></i></label>
+            <input type="radio" class="btn-check" name="options" id="Count" checked>
+            <label class="btn btn-light" for="Count"><i class="fas fa-sort-amount-down mr-1"></i>Rel.</label>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12 col-md-12 mb-1 container">
+          <div class="row container p-0 m-0">
+            <div class="col">
+              <label><input type="search" name="q"></label>
+            </div>
+            <div class="col">
+              <p class="font-weight-normal text-end my-2">Cant.</p>
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="min." id="PrecioMinimo">
+            </div>
+            <div class="col">
+              <input class="form-control" type="number" placeholder="máx." id="PrecioMaximo">
+            </div>
+            <div class="col-3 p-0">
+              <div class="btn-group" role="group">
+                <button class="btn btn-light btn-block" id="FiltroPrecio">Filtrar</button>
+                <button class="btn btn-link btn-sm" id="LimpiarFiltrosPrecio">Limpiar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="list-group" id="product-list-container">
+          </div>
+        </div>
     </div>
   </main>
   <footer class="text-muted">

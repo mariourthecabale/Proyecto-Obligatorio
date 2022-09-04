@@ -3593,6 +3593,9 @@ readers do not read off random characters that represent icons */
 
 .fa-solar-panel:before {
   content: "\f5ba"; }
+  .fa-dollar-sign:before{
+    content:"\0024";
+  }
 
 .fa-sort:before {
   content: "\f0dc"; }
@@ -3607,16 +3610,21 @@ readers do not read off random characters that represent icons */
   content: "\f15e"; }
 
 .fa-sort-alpha-up-alt:before {
-  content: "\f882"; }
+  content: "\f882";}
 
 .fa-sort-amount-down:before {
-  content: "\f160"; }
+  content:"\f160";
+}  
+
+.fa-sort-amount-down-dollar:before {
+  content: "\f160""\0024"; } 
 
 .fa-sort-amount-down-alt:before {
   content: "\f884"; }
 
-.fa-sort-amount-up:before {
-  content: "\f161"; }
+.fa-sort-amount-up-dollar:before {
+  content: "\f161" "\0024";
+ }
 
 .fa-sort-amount-up-alt:before {
   content: "\f885"; }
