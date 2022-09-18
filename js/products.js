@@ -93,6 +93,10 @@ function sortProducts(criterio,array) {   //Ordena los productos segun el criter
     MostrarListaProductos(currentProductsArray);
 }
 
+function setCatID(id) {
+    localStorage.setItem("prodID", id);
+    window.location = "product-info.html"
+}
 
 document.addEventListener("DOMContentLoaded", function (e) {
     let ID = localStorage.getItem('catID') + EXT_TYPE;
@@ -152,5 +156,6 @@ document.addEventListener("DOMContentLoaded", function (e) {
         btnBusc.addEventListener("keyup", function () {
             buscar = btnBusc.value.toLowerCase();
             MostrarListaProductos()
+            console.log(buscar)
         });
   });

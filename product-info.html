@@ -22,7 +22,7 @@
       <div class="collapse navbar-collapse" id="navbarNav">
         <ul class="navbar-nav w-100 justify-content-between">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">Inicio</a>
+            <a class="nav-link" href="portada.html">Inicio</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="categories.html">Categorías</a>
@@ -37,10 +37,21 @@
     </div>
   </nav>
   <main>
-    <div class="container">
-      <div class="alert alert-danger text-center" role="alert">
-        <h4 class="alert-heading">Funcionalidad en desarrollo</h4>
-      </div>
+    <div id="product-info-list-container" class="container">
+    </div>
+    <div>
+      <p>Comentar</p>
+      <textarea id="comentario_usuario"></textarea>
+      <p>Tú puntuación</p>
+      <select id="puntuacion">
+        <option value="0" selected>Elegir...</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+      </select><br>
+      <button id="enviar_coment">Enviar</button>      
     </div>
   </main>
   <footer class="text-muted">
