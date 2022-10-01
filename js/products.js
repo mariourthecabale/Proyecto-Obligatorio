@@ -36,7 +36,7 @@ function MostrarListaProductos() {
                
 
                 htmlContentToAppend += `
-        <div onclick="setCatID(${products.id})" class="list-group-item list-group-item-action cursor-active">
+        <div onclick="setProdID(${products.id})" class="list-group-item list-group-item-action cursor-active">
                 <div class="row">
                     <div class="col-3">
                         <img src="${products.image}" alt="${products.description}" class="img-thumbnail">
@@ -93,10 +93,6 @@ function sortProducts(criterio,array) {   //Ordena los productos segun el criter
     MostrarListaProductos(currentProductsArray);
 }
 
-function setCatID(id) {
-    localStorage.setItem("prodID", id);
-    window.location = "product-info.html"
-}
 
 document.addEventListener("DOMContentLoaded", function (e) {
     let ID = localStorage.getItem('catID') + EXT_TYPE;
@@ -153,9 +149,8 @@ document.addEventListener("DOMContentLoaded", function (e) {
             MostrarListaProductos()
         });
 
-        btnBusc.addEventListener("keyup", function () {
+        btnBusc.addEventListener("input", function () {
             buscar = btnBusc.value.toLowerCase();
             MostrarListaProductos()
-            console.log(buscar)
         });
   });

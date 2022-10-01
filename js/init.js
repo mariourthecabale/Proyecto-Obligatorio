@@ -40,6 +40,16 @@ let getJSONData = function (url) {
     });
 }
 
+function setProdID(id) {
+  localStorage.setItem("prodID", id);
+  window.location = "product-info.html"
+}
+
+function borrarDatosUsuario() {
+  localStorage.setItem('Nombre', "");
+  localStorage.setItem('Imagen', "")
+}
+
 function mostrarUsuario() {
   let htmlContentToAppend = "";
   let imagen = localStorage.getItem('Imagen');
@@ -54,8 +64,15 @@ function mostrarUsuario() {
   <li class="nav-item">
     <a class="nav-link" href="sell.html">Vender</a>
   </li>
-  <li class="nav-item">
-  <a class="nav-link" href="my-profile.html">${nombre}<img class="imagen_usuario"src="${imagen}"></a></li>
+  <li class="dropdown">
+  <button class="dorpdown-btn" href="my-profile.html"><p class="dropdown-name">${nombre}<img class="imagen_usuario"src="${imagen}"></p>
+  </button>
+  <div class="dropdown-content text-center">
+  <a href="cart.html">Mi carrito</a>
+  <a href="my-profile.html">Mi perfil</a>
+  <a href="index.html" onclick=borrarDatosUsuario()>Cerrar sesión</a>
+  </div>
+  </li>
   </li>
 </ul>  `
 
