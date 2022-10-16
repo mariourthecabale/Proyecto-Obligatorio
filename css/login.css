@@ -31,7 +31,7 @@ input {
     width: 270px;
     border-radius: 4px;
     transition: 0.3s;
-    border: 1px rgb(116, 249, 255);
+    border: 1px #74f9ff;
     box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
     outline: none;
 }
@@ -39,7 +39,7 @@ input {
 .ingresar {
     display: block;
     color: #fff;
-    background-color: rgb(110, 235, 241);
+    background-color: #6eebf1;
     width: 270px;
     margin: 10px auto 0px auto;
     padding: 5px;

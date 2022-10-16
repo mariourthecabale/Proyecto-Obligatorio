@@ -6,6 +6,7 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japceibal.github.io/emercado-api/prod
 const CART_INFO_URL = "https://japceibal.github.io/emercado-api/user_cart/";
 const CART_BUY_URL = "https://japceibal.github.io/emercado-api/cart/buy.json";
 const EXT_TYPE = ".json";
+let productos_carrito = []
 
 let showSpinner = function () {
   document.getElementById("spinner-wrapper").style.display = "block";
@@ -41,16 +42,20 @@ let getJSONData = function (url) {
 }
 
 function setProdID(id) {
+  /* Guarda el identificador del producto al hacer click en el */
   localStorage.setItem("prodID", id);
   window.location = "product-info.html"
 }
 
-function borrarDatosUsuario() {
+function borrarDatosUsuario() { 
+  /* Al cerrar sesion borra los datos del usuario */
   localStorage.setItem('Nombre', "");
-  localStorage.setItem('Imagen', "")
+  localStorage.setItem('Imagen', "");
+  localStorage.setItem('Carrito_Compras', "");
 }
 
 function mostrarUsuario() {
+  /* Muestra los datos basicos del usuario en la barra de navegacion*/
   let htmlContentToAppend = "";
   let imagen = localStorage.getItem('Imagen');
   let nombre = localStorage.getItem('Nombre');
@@ -78,8 +83,8 @@ function mostrarUsuario() {
 
   document.getElementById("navbarNav").innerHTML = htmlContentToAppend;
 }
-console.log(mostrarUsuario)
+
 
 document.addEventListener("DOMContentLoaded", function () {
-  mostrarUsuario();
+  mostrarUsuario();  
 });
