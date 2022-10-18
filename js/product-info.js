@@ -48,24 +48,24 @@ function MostrarMiniaturas(arrayImages) { //se encarga de crear etiquetas img a 
   let miniImages = "";
   for (i = 0; i < arrayImages.length; i++) {
     let mini = arrayImages[i];
-    miniImages += `<img class="d-block img-thumbnail rounded p-0 m-1" src="${mini}" onmouseover=llevarAPrincipal("${mini}")>`
+    miniImages += `<img class="col-12 d-block img-thumbnail rounded p-0 m-1" src="${mini}" onmouseover=llevarAPrincipal("${mini}")>`
   }
   return miniImages
 };
 
 function llevarAPrincipal(imagen) { //lleva una de las miniaturas hacia la imagen principal del producto
-  let cambiarImg = `<img id="imagen-principal" src="${imagen}">`;
+  let cambiarImg = `<img id="imagen-principal" class="img-fluid" src="${imagen}">`;
   document.getElementById("principal").innerHTML = cambiarImg;
 }
 
 function crearSlides(array) { //crea las etiquetas para mostrar los productos relacionados en el carrousel
   let slides = "";
   for (i = 1; i < array.length; i++) {
-    slides = `<div class="carousel-item" onclick=setProdID(${array[i].id})>
+    slides = `<div class="carousel-item pointer" onclick=setProdID(${array[i].id})>
     <div class="card">
       <img class="img-thumbnail" src="${array[i].image}" alt="${array[i].name}">
-      <div class="card-text">
-        <p class="text-center">${array[i].name}</p>
+      <div class="card-text card-rel">
+        <p class="text-center mt-3">${array[i].name}</p>
       </div>
     </div>
   </div>`
@@ -78,30 +78,32 @@ function relatedProducts(arrayRel) { //se encarga de crear el carrousel y su pri
   let i = 0;
   let relacionado = arrayRel[i];
   htmlRelacionados = `
-    <div class= "card-body rounded bg-light">
-    <h5 class="text-center">Promocionados</h5>
-    <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-    <div id="acaVan" class="carousel-inner">
-      <div class="carousel-item active" onclick=setProdID(${relacionado.id})>
-      <div class="card">
-      <img class="img-thumbnail" src="${relacionado.image}" alt="${relacionado.name}">
-      <div class="card-text">
-        <p class="text-center">${relacionado.name}</p>
+    <div class= "card-body rounded pt-0">
+      <div class="bg-dark rounded">
+       <h5 class="text-center text-light p-2 m-0">Promocionados</h5>
       </div>
-    </div>
+       <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+         <div id="acaVan" class="carousel-inner">
+           <div class="carousel-item active pointer" onclick=setProdID(${relacionado.id})>
+              <div class="card">
+                <img class="img-thumbnail" src="${relacionado.image}" alt="${relacionado.name}">
+                <div class="card-text card-rel">
+                 <p class="text-center mt-3">${relacionado.name}</p>
+                 </div>
+     </div>
       </div>
       ${crearSlides(arrayRel)}
-    </div>
-    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+     </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
       <span class="carousel-control-prev-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Previous</span>
-    </button>
-    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+     </button>
+     <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
       <span class="carousel-control-next-icon" aria-hidden="true"></span>
       <span class="visually-hidden">Next</span>
-    </button>
-  </div>
-  </div>`
+      </button>
+      </div>
+     </div>`
   document.getElementById("relacionados").innerHTML += htmlRelacionados;
 }
 
@@ -145,7 +147,8 @@ function MostrarInfoProductos() { //muestra toda la info del producto, con sus i
   let comentarios = COMENT_PRODUCT;
   let htmlComentarios = `<div class="ingresar-comentario">
     <p class="invitacion-a-comentar">Nos interesa tu comentario</p>
-    <textarea class="comentario-usuario" id="comentario_usuario"></textarea>
+    <textarea class="comentario-usuario w-75 h-25" id="comentario_usuario"></textarea>
+    <button id="enviar_coment" class="enviar-coment" onclick=mostrarNuevoComentario();>Enviar</button>
     <select id="puntuacion"class="puntuacion">
     <option value="0" selected>Tú puntuación</option>
     <option value="1">1</option>
@@ -153,32 +156,52 @@ function MostrarInfoProductos() { //muestra toda la info del producto, con sus i
     <option value="3">3</option>
     <option value="4">4</option>
     <option value="5">5</option>
-  </select><br>
-    <button id="enviar_coment" class="enviar-coment" onclick=mostrarNuevoComentario();>Enviar</button>      
+  </select>
+          
   </div>`;
 
   htmlContentToAppend += `
-  <div class="product-info"> 
-  <div id="miniatura">
-  ${MostrarMiniaturas(informacion.images)}
+  <div class="my-5">
+    <div class="row"> 
+      <div class="col-2 col-sm-2 col-md-2 col-lg-1" id="miniatura">
+       ${MostrarMiniaturas(informacion.images)}
+      </div>
+      <div id="principal" class="col-10 col-sm-10 col-md-10 col-lg-7 mb-3">
+        <img id="imagen-principal" class="img-fluid" src="${informacion.images[0]}">
+      </div>
+      <div class="col-12 col-sm-12 col-md-12 col-lg-4 p-0">
+      <div class="row accionSobreProduct h-100 w-100 p-0 m-0 me-1">
+        <div class="col-12 ps-0 pe-0">
+            <h2 class="text-center">${informacion.name}<br>${informacion.currency} ${informacion.cost}</h2>  
+          <div class="col-12">
+            <p class="text-center">${informacion.soldCount} vendidos.</p>
+          </div>
+          <div class="col-12">
+            <h5 class="text-center">${informacion.description}.</h5>
+          </div>
+          <div class="row mt-5">
+          <div class="d-flex justify-content-center">
+           <button class="btn mb-3 w-75 btn-comprar">Comprar</button>
+          </div>
+          <div class="d-flex justify-content-center">
+           <button id="agregar_carrito" class="btn w-75 mb-3 btn-comprar">Agregar al carrito</button>
+          </div>
+          </div>
+        </div>
+      </div>
+      </div>    
+    </div>
   </div>
-  <div id="principal" class="principal">
-  <img id="imagen-principal"src="${informacion.images[0]}">
-  </div>
-  <div class="info-product-related-product">
-  <div class="accionSobreProduct">
-  <div class="tamaño-info-product">
-  <h2 class="text-center">${informacion.name}<br>${informacion.currency} ${informacion.cost}</h2><br>
-  <p class="text-center">${informacion.soldCount} vendidos.</p>
-    <p class="text-center">${informacion.description}.</p>
+  <div class="row bg-white pt-4 rounded">
+    <div class="col-12 col-lg-8 col-md-8 col-sm-12 p-0 mb-2">
+     <div id="coment-info-list-container" class="container coment p-0 pe-2 ps-2 w-100">
+     </div>
     </div>
-    <div class="btn-accion-product">
-    <button class="comprar">Comprar</button><br><button id="agregar_carrito" class="agregarCarrito">Agregar al carrito</button>
-    </div>
-    </div>
-    <div id="relacionados"class="container">
-      <div id="acaVan" class="carousel-item active"></div>
-    </div>
+    <div class="col-12 col-lg-4 col-md-4 col-sm-12 p-0">
+      <div id="relacionados" class="w-100">
+        <div id="acaVan" class="carousel-item active">
+        </div>
+      </div>
     </div>
   </div>`
   document.getElementById("product-info-list-container").innerHTML = htmlContentToAppend;
